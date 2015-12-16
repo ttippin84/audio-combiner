@@ -2,13 +2,12 @@
 
 var child_process = require('child_process');
 
-/* CONSTANTS */
-
-var soxPath = 'sox';
-
 /* MODULE */
 
 module.exports = {
+
+	// The path to the Sox audio toolkit executable
+	soxPath: 'sox',
 
 	/*  
 	 * combineSamples -> function (string, string, string)
@@ -21,7 +20,7 @@ module.exports = {
 
 	combineSamples: function (file_1, file_2, outName) {
 
-		var command = soxPath +
+		var command = this.soxPath +
 		              ' ' + '-m' +
 		              ' ' + file_1 +
 		              ' ' + file_2 +
