@@ -10,15 +10,16 @@ module.exports = {
 	soxPath: 'sox',
 
 	/*  
-	 * combineSamples -> function (string, string, string)
+	 * combineSamples -> function (string, string, string, function)
 	 *
 	 * Will combine `file_1`, `file_2` into a wav file called
 	 * `outName` and normalize the result using the sox audio
-	 * library.
+	 * library. Upon completion, `next` callback is called with
+	 * an `error` argument.
 	 *
 	 */
 
-	combineSamples: function (file_1, file_2, outName) {
+	combineSamples: function (file_1, file_2, outName, next) {
 
 		var command = this.soxPath +
 		              ' ' + '-m' +
@@ -28,12 +29,7 @@ module.exports = {
 
 		child_process.exec(command, function (err, stdout, stderr) {
 
-			if (err) {
-				throw new Error ('`audio-combiner` process `sox` failed with error: ' + err.stack);
-			}
-			else {
-				console.log ('2 wav files combined in ' + outName);
-			}
+			next(err);
 
 		});
 	}
