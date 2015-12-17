@@ -29,11 +29,10 @@ module.exports = {
 		child_process.exec(command, function (err, stdout, stderr) {
 
 			if (err) {
-				console.log (err.stack);
 				throw new Error ('`audio-combiner` process `sox` failed with error: ' + err.stack);
 			}
 			else {
-				console.log (stdout);
+				console.log ('2 wav files combined in ' + outName);
 			}
 
 		});
