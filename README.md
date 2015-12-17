@@ -17,12 +17,17 @@ var audioCombiner = require ('./audio-combiner.js');
 
 audioCombiner.soxPath = './sox/sox';
 
-// Then simply call the combineSamples() function with the names of the files and output
+// Then simply call the combineSamples() function with the names of the files, and a callback.
 
 var file_1 = './bell.wav';
 var file_2 = './explosion.wav';
 var outputName = './MyNewSound.wav';
 
-audioCombiner.combineSamples(file_1, file_2, outputName);
+audioCombiner.combineSamples(file_1, file_2, outputName, function(err) {
+
+    if (!err)
+        console.log ('Audio files were combined!');
+	
+});
 
 ```
